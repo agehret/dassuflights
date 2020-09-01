@@ -104,12 +104,15 @@ class _MyHomePageState extends State<MyHomePage> {
         itemCount: (flightList != null) ? flightList.length : 0,
         itemBuilder: (BuildContext context, int index) {
           return Dismissible(
+              direction: DismissDirection.endToStart, // allow only one direction
               background: Container(
-                color: Colors.red,
+                color: Colors.red[800],
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                alignment: AlignmentDirectional.centerEnd,
                 child: Icon(Icons.delete,
                     color: Colors.white),
               ),
-              key: Key(flightList[index].id.toString()), // Key(index.toString() + '_' + flightList[index].datetime.toString()),
+              key: Key(flightList[index].id.toString()),
               child: ListTile(
                   title: Text(new DateFormat("dd.MM.yy HH:mm").format(DateTime.fromMillisecondsSinceEpoch(flightList[index].datetime)),
                       style: _biggerFont),
@@ -124,16 +127,39 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   }
               ),
-              confirmDismiss: (direction) {
-                helper.deleteFlight(flightList[index]);
-                setState(() {
-                  flightList.removeAt(index);
+              confirmDismiss: (direction) async {
+                final bool res = await showDialog( context: context, builder: (BuildContext context) {
+                  return AlertDialog(content: Text(
+                      "Willst Du den Flug wirklich löschen?"),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text(
+                          "Löschen",
+                          style: TextStyle(color: Colors.red[800]),
+                        ),
+                        onPressed: () {
+                          helper.deleteFlight(flightList[index]);
+                          setState(() {
+                            flightList.removeAt(index);
+                          });
+                          Navigator.of(context).pop(true);
+                        },
+                      ),
+                      FlatButton(
+                        child: Text(
+                          "Abbrechen",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop(false);
+                        },
+                      ),
+                    ],
+                  );
                 });
-                Scaffold
-                    .of(context)
-                    .showSnackBar(SnackBar(content: Text("Flug wurde gelöscht."))
-                );
+                return res;
               }
+
           );
         }
     );
