@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
           alignment: Alignment.center,
           height: 55,
           child: Text('Flüge heute: ' + flightsToday.toString(),
-                       style: _bolderFont),//_buildList(flightList),
+                       style: _bolderFont),
         ),
         Container(
           child: Divider(color: Colors.black54),
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildList(List flightList) {
     return ListView.separated(
-        separatorBuilder: (context, index) => Divider(),
+        separatorBuilder: (context, index) => Divider(color: Colors.black26),
         itemCount: (flightList != null) ? flightList.length : 0,
         itemBuilder: (BuildContext context, int index) {
           return Dismissible(
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               key: Key(flightList[index].id.toString()),
               child: ListTile(
-                  title: Text(new DateFormat("dd.MM.yy HH:mm").format(DateTime.fromMillisecondsSinceEpoch(flightList[index].datetime)),
+                  title: Text(new DateFormat("dd.MM.yy      HH:mm").format(DateTime.fromMillisecondsSinceEpoch(flightList[index].datetime)),
                       style: _biggerFont),
                   subtitle: _showSubtitle(flightList[index].note),
                   trailing: Icon(
