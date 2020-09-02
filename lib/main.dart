@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flights_app/ui/flight_dialog.dart';
 import 'package:flights_app/ui/edit_flight_dialog.dart';
-import 'package:flights_app/models/flight_list.dart';
+import 'package:flights_app/models/flight.dart';
 import 'package:flights_app/util/db_helper.dart';
 import 'package:intl/intl.dart';
 
@@ -50,7 +50,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<FlightList> flightList;
+  List<Flight> flightList;
   int flightsToday;
   DbHelper helper = DbHelper();
   final _biggerFont = TextStyle(fontSize: 18.0);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flights_app/models/flight_list.dart';
+import 'package:flights_app/models/flight.dart';
 import 'package:flights_app/util/db_helper.dart';
 
 class FlightDialog extends StatefulWidget {
@@ -79,7 +79,7 @@ class FlightDialogState extends State<FlightDialog> {
               textColor: Colors.white,
               padding: EdgeInsets.all(16.0),
               onPressed: () {
-                FlightList flight = FlightList(0,'',0);
+                Flight flight = Flight(0,'',0);
                 flight.datetime = DateTime.now().millisecondsSinceEpoch;
                 helper.insertFlight(flight);
                 Navigator.pop(context);

@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:flights_app/models/flight_list.dart';
+import 'package:flights_app/models/flight.dart';
 
 class DbHelper {
   final int version = 1;
@@ -25,11 +25,11 @@ class DbHelper {
     return db;
   }
 
-  Future<List<FlightList>> getFlightList() async {
+  Future<List<Flight>> getFlightList() async {
     final List<Map<String, dynamic>> maps = await db.query('flights');
 
     return List.generate(maps.length, (i) {
-      return FlightList (
+      return Flight (
         maps[i]['id'],
         maps[i]['note'],
         maps[i]['datetime'],
@@ -38,11 +38,11 @@ class DbHelper {
   }
 
   // retrieve all flights
-  Future<List<FlightList>> getFlights() async {
+  Future<List<Flight>> getFlights() async {
     final List<Map<String, dynamic>> maps = await db.query('flights', orderBy: "datetime DESC");
 
     return List.generate(maps.length, (i) {
-      return FlightList (
+      return Flight (
         maps[i]['id'],
         maps[i]['note'],
         maps[i]['datetime'],
@@ -60,7 +60,7 @@ class DbHelper {
   }
 
   // insert a new flight
-  Future<int> insertFlight(FlightList flight) async {
+  Future<int> insertFlight(Flight flight) async {
     int id = await this.db.insert(
       'flights',
       flight.toMap(),
@@ -69,12 +69,12 @@ class DbHelper {
     return id;
   }
 
-  Future<int> updateFlight(FlightList flight) async {
+  Future<int> updateFlight(Flight flight) async {
     int result = await db.update("flights", flight.toMap(), where: "id = ?", whereArgs: [flight.id]);
     return result;
   }
 
-  Future<int> deleteFlight(FlightList flight) async {
+  Future<int> deleteFlight(Flight flight) async {
     int result = await db.delete("flights", where: "id = ?", whereArgs: [flight.id]);
     return result;
   }

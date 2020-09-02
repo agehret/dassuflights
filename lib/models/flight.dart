@@ -1,9 +1,9 @@
-class FlightList {
+class Flight {
   int id;
   String note;
   int datetime;
 
-  FlightList (this.id, this.note, this.datetime);
+  Flight (this.id, this.note, this.datetime);
 
   Map<String, dynamic> toMap() {
     return {

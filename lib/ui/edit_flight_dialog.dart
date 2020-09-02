@@ -1,9 +1,9 @@
-import 'package:flights_app/models/flight_list.dart';
+import 'package:flights_app/models/flight.dart';
 import 'package:flutter/material.dart';
 import 'package:flights_app/util/db_helper.dart';
 
 class EditFlightDialog extends StatefulWidget {
-  final FlightList flightList;
+  final Flight flightList;
   EditFlightDialog(this.flightList);
   @override
   EditFlightDialogState createState() {
