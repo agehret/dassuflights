@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: _buildListView(flightList),
+      body: _buildBody(flightList),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 Navigator.push(
@@ -76,6 +76,46 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  Widget _buildBody(List flightList) {
+    if (flightList != null && flightList.length > 0)
+      return _buildListView(flightList);
+    else
+      return _buildIntro();
+  }
+
+  Widget _buildIntro() {
+    return Container(
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(24.0),
+            child: Text('Hallo!',
+                        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold)
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(24.0),
+            child: Text(
+              'Bei Schulungsflügen mit der Dassu kannst Du mit Hilfe dieser App Deine Startchecks machen, '
+                  'Deine ungefähren Startzeitpunkte und die Anzahl der Flüge pro Tag festhalten.',
+                style: _biggerFont,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(24.0),
+            child: Text(
+              'Tippe auf das + Icon unten rechts um Deinen ersten Flug zu erstellen ...',
+              style: _biggerFont,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _buildListView(List flightList) {
     return Column(
