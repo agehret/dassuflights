@@ -30,12 +30,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dassu Flug',
+      title: 'Dassu Flüge',
       theme: ThemeData(
         primarySwatch: colorDassu,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Dassu Flug'),
+      home: MyHomePage(title: 'Dassu Flüge'),
     );
   }
 }
