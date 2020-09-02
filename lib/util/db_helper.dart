@@ -15,7 +15,6 @@ class DbHelper {
   }
 
   Future<Database> openDb() async {
-    print("will open db");
     if (db == null) {
       db = await openDatabase(join(await getDatabasesPath(), 'flights.db'),
           onCreate: (database, version) {
