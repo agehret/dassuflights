@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.all(24.0),
             child: Text(
-              'Tippe auf das + Icon unten rechts um Deinen ersten Flug zu erstellen ...',
+              'Tippe auf das + Icon unten rechts um Deinen ersten Flug zu starten ...',
               style: _biggerFont,
               textAlign: TextAlign.center,
             ),
