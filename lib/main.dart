@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flights_app/ui/colors.dart';
 import 'package:flights_app/ui/flight_dialog.dart';
 import 'package:flights_app/ui/edit_flight_dialog.dart';
 import 'package:flights_app/models/flight.dart';
@@ -6,24 +7,10 @@ import 'package:flights_app/util/db_helper.dart';
 import 'package:intl/intl.dart';
 
 void main() async {
-  runApp(MyApp());
+  runApp(FlightsApp());
 }
 
-Map<int, Color> color =
-{
-  50:Color.fromRGBO(15,70,135, .1),
-  100:Color.fromRGBO(15,70,135, .2),
-  200:Color.fromRGBO(15,70,135, .3),
-  300:Color.fromRGBO(15,70,135, .4),
-  400:Color.fromRGBO(15,70,135, .5),
-  500:Color.fromRGBO(15,70,135, .6),
-  600:Color.fromRGBO(15,70,135, .7),
-  700:Color.fromRGBO(15,70,135, .8),
-  800:Color.fromRGBO(15,70,135, .9),
-  900:Color.fromRGBO(15,70,135, 1),
-};
-
-class MyApp extends StatelessWidget {
+class FlightsApp extends StatelessWidget {
 
   final MaterialColor colorDassu = MaterialColor(0xFF0D4789, color);
 
@@ -35,21 +22,21 @@ class MyApp extends StatelessWidget {
         primarySwatch: colorDassu,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Dassu Flüge'),
+      home: FlightsPage(title: 'Dassu Flüge'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class FlightsPage extends StatefulWidget {
+  FlightsPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _FlightsPageState createState() => _FlightsPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _FlightsPageState extends State<FlightsPage> {
   List<Flight> flightList;
   int flightsToday;
   DbHelper helper = DbHelper();
