@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Flight {
   int id;
   String note;
@@ -11,6 +13,10 @@ class Flight {
       'note': note,
       'datetime': datetime,
     };
+  }
+
+  String displayDate() {
+    return new DateFormat("dd.MM.yy      HH:mm").format(DateTime.fromMillisecondsSinceEpoch(this.datetime)).toString();
   }
 
 

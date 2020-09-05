@@ -4,7 +4,7 @@ import 'package:flights_app/ui/flight_dialog.dart';
 import 'package:flights_app/ui/edit_flight_dialog.dart';
 import 'package:flights_app/models/flight.dart';
 import 'package:flights_app/util/db_helper.dart';
-import 'package:intl/intl.dart';
+
 
 void main() async {
   runApp(FlightsApp());
@@ -139,7 +139,7 @@ class _FlightsPageState extends State<FlightsPage> {
               ),
               key: Key(flightList[index].id.toString()),
               child: ListTile(
-                  title: Text(new DateFormat("dd.MM.yy      HH:mm").format(DateTime.fromMillisecondsSinceEpoch(flightList[index].datetime)),
+                  title: Text(flightList[index].displayDate(),
                       style: biggerFont),
                   subtitle: _showSubtitle(flightList[index].note),
                   trailing: Icon(
