@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 Map<int, Color> color =
 {
   50:Color.fromRGBO(15,70,135, .1),
@@ -16,3 +15,6 @@ Map<int, Color> color =
 };
 
 final MaterialColor colorDassu = MaterialColor(0xFF0D4789, color);
+
+final biggerFont = TextStyle(fontSize: 18.0);
+final bolderFont = TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flights_app/ui/colors.dart';
+import 'package:flights_app/ui/ui_styles.dart';
 import 'package:flights_app/ui/flight_dialog.dart';
 import 'package:flights_app/ui/edit_flight_dialog.dart';
 import 'package:flights_app/models/flight.dart';
@@ -12,7 +12,7 @@ void main() async {
 
 class FlightsApp extends StatelessWidget {
 
-  final MaterialColor colorDassu = MaterialColor(0xFF0D4789, color);
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +40,6 @@ class _FlightsPageState extends State<FlightsPage> {
   List<Flight> flightList;
   int flightsToday;
   DbHelper helper = DbHelper();
-  final _biggerFont = TextStyle(fontSize: 18.0);
-  final _bolderFont = TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +85,7 @@ class _FlightsPageState extends State<FlightsPage> {
             child: Text(
               'Bei Schulungsflügen mit der Dassu kannst Du mit Hilfe dieser App Deine Startchecks machen, '
                   'Deine ungefähren Startzeitpunkte und die Anzahl der Flüge pro Tag festhalten.',
-                style: _biggerFont,
+                style: biggerFont,
               textAlign: TextAlign.center,
             ),
           ),
@@ -95,7 +93,7 @@ class _FlightsPageState extends State<FlightsPage> {
             padding: EdgeInsets.all(24.0),
             child: Text(
               'Tippe auf das + Icon unten rechts um Deinen ersten Flug zu starten ...',
-              style: _biggerFont,
+              style: biggerFont,
               textAlign: TextAlign.center,
             ),
           ),
@@ -111,7 +109,7 @@ class _FlightsPageState extends State<FlightsPage> {
           alignment: Alignment.center,
           height: 55,
           child: Text('Flüge heute: ' + flightsToday.toString(),
-                       style: _bolderFont),
+                       style: bolderFont),
         ),
         Container(
           child: Divider(color: Colors.black54),
@@ -142,7 +140,7 @@ class _FlightsPageState extends State<FlightsPage> {
               key: Key(flightList[index].id.toString()),
               child: ListTile(
                   title: Text(new DateFormat("dd.MM.yy      HH:mm").format(DateTime.fromMillisecondsSinceEpoch(flightList[index].datetime)),
-                      style: _biggerFont),
+                      style: biggerFont),
                   subtitle: _showSubtitle(flightList[index].note),
                   trailing: Icon(
                     Icons.note_add,
