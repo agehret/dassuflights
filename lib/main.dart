@@ -11,9 +11,6 @@ void main() async {
 }
 
 class FlightsApp extends StatelessWidget {
-
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,14 +24,15 @@ class FlightsApp extends StatelessWidget {
   }
 }
 
+
 class FlightsPage extends StatefulWidget {
   FlightsPage({Key key, this.title}) : super(key: key);
-
   final String title;
 
   @override
   _FlightsPageState createState() => _FlightsPageState();
 }
+
 
 class _FlightsPageState extends State<FlightsPage> {
   List<Flight> flightList;
@@ -61,12 +59,14 @@ class _FlightsPageState extends State<FlightsPage> {
     );
   }
 
+
   Widget _buildBody(List flightList) {
     if (flightList != null && flightList.length > 0)
       return _buildListView(flightList);
     else
       return _buildIntro();
   }
+
 
   Widget _buildIntro() {
     return Container(
@@ -102,6 +102,7 @@ class _FlightsPageState extends State<FlightsPage> {
     );
   }
 
+
   Widget _buildListView(List flightList) {
     return Column(
       children: <Widget>[
@@ -122,6 +123,7 @@ class _FlightsPageState extends State<FlightsPage> {
       ]
     );
 }
+
 
   Widget _buildList(List flightList) {
     return ListView.separated(
@@ -190,6 +192,7 @@ class _FlightsPageState extends State<FlightsPage> {
     );
   }
 
+
   Widget _showSubtitle(String note) {
     if (note == '')
       return null;
@@ -202,6 +205,7 @@ class _FlightsPageState extends State<FlightsPage> {
       ),
     );
   }
+
 
   Future showData() async {
     await helper.openDb();
