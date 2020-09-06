@@ -47,6 +47,7 @@ class EditFlightDialogState extends State<EditFlightDialog> {
                             decoration:
                                 InputDecoration(labelText: 'Notiz'),
                             maxLines: 8,
+                            autofocus: true,
                           ),
                           Container(
                             padding: const EdgeInsets.symmetric(
