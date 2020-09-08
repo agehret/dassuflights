@@ -44,7 +44,7 @@ class ContributeDialogState extends State<ContributeDialog> {
                       textColor: Colors.white,
                       padding: EdgeInsets.all(16.0),
                         onPressed: _launchTicketURL,
-                        child: Text('Neues Ticket erstellen'),
+                        child: Text('Neues Ticket erstellen', style: biggerFont),
                     )
                   ),
                 ),
@@ -61,7 +61,7 @@ class ContributeDialogState extends State<ContributeDialog> {
                         textColor: Colors.white,
                         padding: EdgeInsets.all(16.0),
                         onPressed: _launchCodeURL,
-                        child: Text('Code ansehen'),
+                        child: Text('Code ansehen', style: biggerFont),
                       )
                   ),
                 ),
