@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flights_app/ui/ui_styles.dart';
 import 'package:flights_app/ui/flight_dialog.dart';
+import 'package:flights_app/ui/about_dialog.dart';
+import 'package:flights_app/ui/contribute_dialog.dart';
 import 'package:flights_app/ui/edit_flight_dialog.dart';
 import 'package:flights_app/models/flight.dart';
 import 'package:flights_app/util/db_helper.dart';
@@ -27,6 +29,29 @@ class _FlightsListState extends State<FlightsList> {
         title: Text(widget.title),
       ),
       body: _buildBody(flightList),
+      endDrawer: Drawer (
+          child: ListView(
+
+            children: <Widget> [
+              ListTile(
+                title: Text('Über diese App', style: biggerFont),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AboutAppDialog()),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text('Beitragen', style: biggerFont),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ContributeDialog()),
+                  );
+                },
+              ),
+            ]
+          ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -35,7 +60,7 @@ class _FlightsListState extends State<FlightsList> {
           );
         },
         child: Icon(Icons.add),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 
