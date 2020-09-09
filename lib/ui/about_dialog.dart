@@ -18,8 +18,9 @@ class AboutAppDialogState extends State<AboutAppDialog> {
           // the App.build method, and use it to set our appbar title.
           title: Text("Über die App"),
         ),
-        body: Container(
-            padding: const EdgeInsets.all(20.0),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(10.0),
             alignment: Alignment(0.0, 0.0),
             child: Column(
               children: <Widget>[
@@ -30,7 +31,7 @@ class AboutAppDialogState extends State<AboutAppDialog> {
                     )
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
                   child: Text('Diese kleine App kann Dir bei Deiner Ausbildung '
                       ' bei der Deutschen Alpensegeflugschule (Dassu) helfen, sie erfüllt zwei Aufgaben:',
                       style: biggerFont),
@@ -61,6 +62,7 @@ class AboutAppDialogState extends State<AboutAppDialog> {
               ],
 
             )
+        )
         )
     );
   }

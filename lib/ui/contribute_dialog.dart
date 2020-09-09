@@ -20,7 +20,7 @@ class ContributeDialogState extends State<ContributeDialog> {
           title: Text("Über die App"),
         ),
         body: Container(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(10.0),
             alignment: Alignment(0.0, 0.0),
             child: Column(
               children: <Widget>[
@@ -31,7 +31,7 @@ class ContributeDialogState extends State<ContributeDialog> {
                     )
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
                   child: Text('Du wünscht Dir weitere Funktionen oder hast einen Fehler entdeckt?\n\nDu kannst ganz einfach'
                               ' dazu beitragen diese App zu verbessern in dem Du ein Ticket erstellst:',
                       style: biggerFont),

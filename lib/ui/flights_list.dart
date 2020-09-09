@@ -41,14 +41,14 @@ class _FlightsListState extends State<FlightsList> {
                   );
                 },
               ),
-              ListTile(
-                title: Text('Beitragen', style: biggerFont),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ContributeDialog()),
-                  );
-                },
-              ),
+              //ListTile(
+              //  title: Text('Beitragen', style: biggerFont),
+              //  onTap: () {
+              //    Navigator.pop(context);
+              //    Navigator.push(context, MaterialPageRoute(builder: (context) => ContributeDialog()),
+              //    );
+              //  },
+              //),
             ]
           ),
       ),

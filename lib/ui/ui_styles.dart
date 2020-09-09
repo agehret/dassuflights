@@ -18,4 +18,4 @@ final MaterialColor colorDassu = MaterialColor(0xFF0D4789, color);
 
 final biggerFont = TextStyle(fontSize: 18.0);
 final bolderFont = TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold);
-final heading1   = TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold);
+final heading1   = TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold);
