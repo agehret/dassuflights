@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flights_app/ui/ui_styles.dart';
 import 'package:flights_app/ui/flight_dialog.dart';
 import 'package:flights_app/ui/about_dialog.dart';
-import 'package:flights_app/ui/contribute_dialog.dart';
 import 'package:flights_app/ui/edit_flight_dialog.dart';
 import 'package:flights_app/models/flight.dart';
 import 'package:flights_app/util/db_helper.dart';

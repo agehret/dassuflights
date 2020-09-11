@@ -1,29 +1,38 @@
+
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flights_app/models/flight.dart';
 
 class DbHelper {
-  final int version = 1;
   Database db;
-
   static final DbHelper _dbHelper = DbHelper._internal();
-
   DbHelper._internal();
 
   factory DbHelper() {
     return _dbHelper;
   }
 
+  final migrationScripts = [
+    'CREATE TABLE flights(id INTEGER PRIMARY KEY, note TEXT, datetime INTEGER)',
+    'ALTER TABLE flights ADD status VARCHAR'
+  ];
+
   Future<Database> openDb() async {
-    if (db == null) {
-      db = await openDatabase(join(await getDatabasesPath(), 'flights.db'),
-          onCreate: (database, version) {
-            database.execute(
-              'CREATE TABLE flights(id INTEGER PRIMARY KEY, note TEXT, datetime INTEGER)');
-      }, version: version);
-    }
+      db = await openDatabase(
+          join(await getDatabasesPath(), 'dassuflights.db'),
+          version: migrationScripts.length,
+          onCreate: (Database db, int version) async {
+            migrationScripts.forEach((script) async => await db.execute(script));
+          },
+          onUpgrade: (Database db, int oldVersion, int version) async {
+            for (var i = oldVersion; i <= version - 1; i++) {
+              await db.execute(migrationScripts[i]);
+            }
+          }
+      );
     return db;
   }
+
 
   Future<List<Flight>> getFlightList() async {
     final List<Map<String, dynamic>> maps = await db.query('flights');
@@ -33,6 +42,7 @@ class DbHelper {
         maps[i]['id'],
         maps[i]['note'],
         maps[i]['datetime'],
+        maps[i]['status'],
       );
     });
   }
@@ -46,6 +56,7 @@ class DbHelper {
         maps[i]['id'],
         maps[i]['note'],
         maps[i]['datetime'],
+        maps[i]['status'],
       );
     });
   }
